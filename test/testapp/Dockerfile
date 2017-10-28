@@ -4,12 +4,12 @@ FROM node:6.11.5
 WORKDIR /usr/src/testapp
 
 # Install app dependencies
-COPY package.json .
+COPY app/package.json .
 
 RUN npm install
 
 # Bundle app source
-COPY . .
+COPY app/. .
 
 EXPOSE 3000
 CMD [ "npm", "start" ]
