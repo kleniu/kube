@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: testpod
+spec:
+  containers:
+    - image: centos
+      name: testcentos
+      command: ["tail"]
+      args: ["-f", "/dev/null"]
+    - image: ubuntu
+      name: testubuntu
+      command: ["tail"]
+      args: ["-f", "/dev/null"]
