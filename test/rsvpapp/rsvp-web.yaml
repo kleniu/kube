@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: rsvp-web
+spec: 
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: rsvpweb
+    spec:
+      containers:
+      - name: rsvp-app
+        image: rsvpapp:v1
+        env:
+        - name: MONGODB_HOST
+          value: mongodb
+        - name: LINK
+          value: 'http://www.meetup.com/cloudyuga/'
+        - name: TEXT1
+          value: 'CloudYuga'
+        - name: TEXT2
+          value: 'Garage RSVP!'
+        - name: LOGO
+          value: 'https://raw.githubusercontent.com/cloudyuga/rsvpapp/master/static/cloudyuga.png'
+        - name: COMPANY
+          value: 'CloudYuga Technology Pvt. Ltd.'
+        ports:
+        - containerPort: 5000
+          name: web-port

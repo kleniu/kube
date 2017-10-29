@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb  # it will be used as hostname for connection to db
+  labels:
+    app: rsvpdb
+spec: # As we did not specify any ServiceType, mongodb will have the default ClusterIP ServiceType.
+  ports:
+  - port: 27017
+    protocol: TCP
+  selector:
+    appdb: rsvpdb
